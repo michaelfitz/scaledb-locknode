@@ -1,5 +1,5 @@
 ---
-Name: mariadb
+Name: scaledbslm
 Cartridge-Short-Name: MARIADB
 Architecture: noarch1
 -Display-Name: MariaDB 5.5
@@ -41,10 +41,10 @@ Provides:
 Publishes:
   publish-db-connection-info:
     Type: ENV:NET_TCP:db:connection-info
-  publish-mariadb-node:
+  publish-slm-node:
     Type: NET_TCP:mariadb-cluster
 Subscribes:
-  set-mariadb-node:
+  set-cas-node:
     Type: NET_TCP:mariadb-cluster
 Scaling:
   Min: 1
