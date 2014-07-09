@@ -42,10 +42,10 @@ Publishes:
   publish-db-connection-info:
     Type: ENV:NET_TCP:db:connection-info
   publish-slm-node:
-    Type: NET_TCP:slm-cluster
+    Type: NET_TCP:mariadb-cluster
 Subscribes:
   set-cas-node:
-    Type: NET_TCP:cas-cluster
+    Type: NET_TCP:mariadb-cluster
 Scaling:
   Min: 1
   Max: 10
