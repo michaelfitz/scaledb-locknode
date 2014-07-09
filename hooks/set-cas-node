@@ -15,6 +15,34 @@ echo "$@"  >  $OPENSHIFT_MARIADB_DIR/cas-hook-log-latest
 
 
 
+ 
+CAS_NAME=`cat hook-log | sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 1`
+CAS_PORT=`cat hook-log | sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 2`
+get_cas_ip
+
+echo $CAS_IP   > t92
+echo $CAS_PORT > t93
+
+#only start 1 SLM
+
+export running=`pgrep scaledb_slm`
+
+echo $running > t91
+
+if [ -z "$running"]
+then
+echo "SLM not running" + $running
+     sleep 10
+    ${OPENSHIFT_MARIADB_DIR}/michael44/scaledb-latest-mariadb-5.5.34/lib/scaledb_slm ${OPENSHIFT_MARIADB_DIR}/slm.cnf SLM  $OPENSHIFT_MARIADB_DB_HOST  $OPENSHIFT_MARIADB_SLM_PORT CAS  $CAS_IP $CAS_PORT   > t2.txt 2>&1 &
+
+fi
+
+
+    
+
+
+
+
 
 
 
