@@ -16,8 +16,8 @@ echo "$@"  >  $OPENSHIFT_MARIADB_DIR/cas-hook-log-latest
 
 
  
-CAS_NAME=`cat hook-log | sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 1`
-CAS_PORT=`cat hook-log | sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 2`
+CAS_NAME=`cat cas-hook-log-latest | sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 1`
+CAS_PORT=`cat cas-hook-log-latest| sed "s/'//g" | grep -m 1 -o 'OPENSHIFT_FROM_CAS_NODE=.*' | cut -d '=' -f 2 | cut -d ':' -f 2`
 get_cas_ip
 
 echo $CAS_IP   > t92
