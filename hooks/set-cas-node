@@ -29,7 +29,7 @@ export running=`pgrep scaledb_slm`
 
 echo $running > t91
 
-if [ -z "$running"]
+if [ -z "$running" ]
 then
 echo "SLM not running" + $running
      sleep 10
