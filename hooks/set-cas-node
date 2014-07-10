@@ -33,7 +33,11 @@ if [ -z "$running" ]
 then
 echo "SLM not running" + $running
      sleep 10
-    ${OPENSHIFT_MARIADB_DIR}/michael44/scaledb-latest-mariadb-5.5.34/lib/scaledb_slm ${OPENSHIFT_MARIADB_DIR}/slm.cnf SLM  $OPENSHIFT_MARIADB_DB_HOST  $OPENSHIFT_MARIADB_SLM_PORT CAS  $CAS_IP $CAS_PORT   > t2.txt 2>&1 &
+
+export SCALEDB_INSTALL_PATH=$OPENSHIFT_MARIADB_DIR/michael44/scaledb-latest-mariadb-5.5.34
+${SCALEDB_INSTALL_PATH}/lib/scaledb_slm ${OPENSHIFT_MARIADB_DIR}/slm.cnf SLM  $OPENSHIFT_MARIADB_DB_HOST  $OPENSHIFT_MARIADB_SLM_PORT CAS  $CAS_IP $CAS_PORT   > t2.txt 2>&1 &
+
+#    ${OPENSHIFT_MARIADB_DIR}/michael44/scaledb-latest-mariadb-5.5.34/lib/scaledb_slm ${OPENSHIFT_MARIADB_DIR}/slm.cnf SLM  $OPENSHIFT_MARIADB_DB_HOST  $OPENSHIFT_MARIADB_SLM_PORT CAS  $CAS_IP $CAS_PORT   > t2.txt 2>&1 &
 
 fi
 
